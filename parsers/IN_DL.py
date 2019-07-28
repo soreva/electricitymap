@@ -44,7 +44,9 @@ def fetch_production(zone_key='IN-DL', session=None, target_datetime=None, logge
     energy = {
         "Gas": 0,
         "G2E": 0,
-        "Coal": 0
+        "Coal": 0,
+        "Hydro": 0,
+        "Nuclear": 0
     }
 
     zonekey.assert_zone_key(zone_key, 'IN-DL')
@@ -66,7 +68,9 @@ def fetch_production(zone_key='IN-DL', session=None, target_datetime=None, logge
         'production': {
             'coal': energy["Coal"],
             'gas': energy["Gas"],
-            'biomass': energy["G2E"]
+            'biomass': energy["G2E"],
+            'hydro': energy["Hydro"],
+            'nuclear': energy["Nuclear"]
         },
         'source': 'delhisldc.org',
     }
