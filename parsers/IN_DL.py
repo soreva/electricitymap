@@ -54,11 +54,11 @@ def fetch_production(zone_key='IN-DL', session=None, target_datetime=None, logge
     india_date_string = IN.read_text_from_span_id(html, 'ContentPlaceHolder3_ddgenco')
     india_date_time = IN.read_datetime_with_only_time(india_date_string, 'HH:mm:ss')
 
-    prod_table = html.find("table", {"id": "ContentPlaceHolder3_dgenco"})
-    prod_rows = prod_table.findAll('tr')
+    state_generation_table = html.find("table", {"id": "ContentPlaceHolder3_dgenco"})
+    state_generation_rows = state_generation_table.findAll('tr')
 
     for plant in range(1, len(plants) + 1):
-        energy[plants[read_name(prod_rows[plant])]] += read_value(prod_rows[plant])
+        energy[plants[read_name(state_generation_rows[plant])]] += read_value(state_generation_rows[plant])
 
     data = {
         'zoneKey': zone_key,
